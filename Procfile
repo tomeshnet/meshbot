@@ -1,1 +1,1 @@
-web: bin/hubot.forever -a matrix
+web: bin/hubot -a matrix
