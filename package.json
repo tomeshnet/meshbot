@@ -5,6 +5,7 @@
   "author": "Toronto Mesh <hello@tomesh.net>",
   "description": "A helpful robot for Toronto Mesh",
   "dependencies": {
+    "forever": "^0.15.3",
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.2.6",
