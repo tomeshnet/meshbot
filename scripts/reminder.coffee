@@ -73,20 +73,20 @@ module.exports = (robot) ->
       return yes
     return no
 
-  robot.respond /(?:remind|reminder|reminders) list( all)?/i, (msg) ->
-    [ __, all ] = msg.match
-    room = if all then undefined else msg.message.room
-    message = ""
+  # robot.respond /(?:remind|reminder|reminders) list( all)?/i, (msg) ->
+  #   [ __, all ] = msg.match
+  #   room = if all then undefined else msg.message.room
+  #   message = ""
 
-    for reminder, index in getReminders()
-      if not room or room and room is reminder.room
-        sched = later.parse.text reminder.time
-        next = moment later.schedule(sched).next(1, Date.now())
-        message += "#{index}) Reminder to `#{reminder.text}` has been scheduled to run in <##{reminder.room}> #{reminder.time} and will next run #{next.fromNow()}\n"
-    # message = "No reminders have been scheduled" if not message
+  #   for reminder, index in getReminders()
+  #     if not room or room and room is reminder.room
+  #       sched = later.parse.text reminder.time
+  #       next = moment later.schedule(sched).next(1, Date.now())
+  #       message += "#{index}) Reminder to `#{reminder.text}` has been scheduled to run in <##{reminder.room}> #{reminder.time} and will next run #{next.fromNow()}\n"
+  #   message = "No reminders have been scheduled" if not message
 
-    robot.messageRoom msg.message.room, message
-    msg.finish()
+  #   robot.messageRoom msg.message.room, message
+  #   msg.finish()
 
   robot.respond /(?:remind|reminder|reminders) (?:remove|delete|cancel) (\d)/i, (msg) ->
     [ __, id ] = msg.match
