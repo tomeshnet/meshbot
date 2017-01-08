@@ -83,7 +83,7 @@ module.exports = (robot) ->
         sched = later.parse.text reminder.time
         next = moment later.schedule(sched).next(1, Date.now())
         message += "#{index}) Reminder to `#{reminder.text}` has been scheduled to run in <##{reminder.room}> #{reminder.time} and will next run #{next.fromNow()}\n"
-    message = "No reminders have been scheduled" if not message
+    # message = "No reminders have been scheduled" if not message
 
     robot.messageRoom msg.message.room, message
     msg.finish()
