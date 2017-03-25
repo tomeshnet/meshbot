@@ -142,7 +142,7 @@ module.exports = (robot) ->
   robot.respond /events$/i, (msg) ->
     today = new Date
     schedule.showSchedule(msg, today)
-  robot.respond /events for (\w*)? ?(\w*)$/i, (msg) ->
+  robot.respond /events (\w*)? ?(\w*)$/i, (msg) ->
     days_of_week = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
     if msg.match[1] in days_of_week
       target_day = msg.match[1].toLowerCase()
