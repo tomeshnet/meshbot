@@ -81,7 +81,7 @@ class Schedule
         friendly_time = moment(event.starts).format("h:mma on dddd");
         console.log(event.title+': '+time_until_event) if self.config.debug_level>=1
         if (time_until_event > 0) and (time_until_event < (self.config.upcoming_check_headsup))
-          self.robot.messageRoom 'general', "Reminder: *" + event.title + "* at *" + friendly_time + "*. This is taking place at *" + event.location + "*. More details here: " + event.url
+          self.robot.messageRoom '#bots:tomesh.net', "Reminder: *" + event.title + "* at *" + friendly_time + "*. This is taking place at *" + event.location + "*. More details here: " + event.url
 
     # Load upcoming events into memory, hashed by timestamp
     setInterval(@indexUpcomingEvents, @config.interval_ics_check)
