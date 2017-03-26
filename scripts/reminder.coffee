@@ -87,7 +87,7 @@ class Schedule
     setInterval(@indexUpcomingEvents, @config.interval_ics_check)
 
     # Post a reminder at a reasonable time
-    scheduler.scheduleJob {hour: 23, minute: 37}, @checkUpcomingEvents
+    scheduler.scheduleJob {hour: 10, minute: 30}, @checkUpcomingEvents
 
   showSchedule: (msg, limit = null, cal_index = null) ->
 
