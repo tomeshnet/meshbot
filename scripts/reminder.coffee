@@ -12,30 +12,14 @@ class Schedule
   constructor: (@robot) ->
     self = this
     @config = {
-      interval_ics_check: 30*60*1000,       # (Every Half-Hour) How often the ics should be queried for new events
+      interval_ics_check: 30,               # (Every Half-Hour) How often the ics should be queried for new events
       upcoming_check_headsup: 1440*60*1000, # (24 Hours) The ammount of lead-time before a reminder is posted
-      debug_level: 0
+      debug_level: 2
     }
     @cals = {
       "Toronto Mesh":"https://tomesh.net/events.ics"
     }
     @upcomingEvents = []
-
-    @getFormattedTime = (d) ->
-      if d.getHours()==12
-        formatted = '12'
-      else
-        formatted = d.getHours()%12
-      formatted += ':'
-
-      if d.getMinutes()<10
-        formatted += '0'
-      formatted += d.getMinutes()
-
-      if d.getHours()>=12
-        formatted += 'pm'
-      else
-        formatted += 'am'
 
     @addUpcomingEvent = (event) ->
       self.upcomingEvents.push event
@@ -84,10 +68,10 @@ class Schedule
           self.robot.messageRoom '!AdbpaCueAcEpUEmjwG:tomesh.net', "Reminder: *" + event.title + "* at *" + friendly_time + "*. This is taking place at *" + event.location + "*. More details here: " + event.url
 
     # Load upcoming events into memory, hashed by timestamp
-    setInterval(@indexUpcomingEvents, @config.interval_ics_check)
+    scheduler.scheduleJob {minute: @config.interval_ics_check}, @indexUpcomingEvents
 
     # Post a reminder at a reasonable time
-    scheduler.scheduleJob {hour: 10, minute: 30}, @checkUpcomingEvents
+    scheduler.scheduleJob {hour: 19, minute: 30}, @checkUpcomingEvents
 
   showSchedule: (msg, limit = null, cal_index = null) ->
 
@@ -129,7 +113,7 @@ class Schedule
                   if event.summary == undefined
                     event.summary = event.description
                   if starts >= filter_start and ends <= filter_end
-                    event_list.push "*#{event.summary}* from *#{self.getFormattedTime(starts)} to #{self.getFormattedTime(ends)}* at *#{event.location}*. #{event.url}"
+                    event_list.push "*#{event.summary}* from *#{moment(starts).format("h:mma")} to #{moment(ends).format("h:mma")}* at *#{event.location}*. #{event.url}"
               if event_list.length<=0
                 msg.send "There are no events scheduled for " + filter_label
               else
