@@ -4,4 +4,4 @@
 
 module.exports = (robot) ->
   robot.respond /(?=.*\btea\b)(?=.*\bearl gray\b).+/i, (res) ->
-    res.send 'http://overtheteacups.com/wp-content/uploads/2012/02/tea-earl-grey.jpg'
+    res.send 'https://www.tetley.co.uk/images/librariesprovider6/default-album/tea-cup0ede35bfad0f648b8397ff0a000946e8-tmb-small.tmb-medium.png?sfvrsn=1'
