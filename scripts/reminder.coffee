@@ -12,7 +12,7 @@ class Schedule
   constructor: (@robot) ->
     self = this
     @config = {
-      interval_ics_check: 30,               # (Every Half-Hour) How often the ics should be queried for new events
+      interval_ics_check: 25,               # (Every Half-Hour) How often the ics should be queried for new events
       upcoming_check_headsup: 1440*60*1000, # (24 Hours) The ammount of lead-time before a reminder is posted
       debug_level: 2
     }
