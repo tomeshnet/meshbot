@@ -14,11 +14,11 @@ available, etc!
 
 ### Running meshbot Locally
 
-You can test your hubot by running the following, however some plugins will not
+You can test your hubot by running it localy in shell. However some plugins will not
 behave as expected unless the [environment variables](#configuration) they rely
 upon have been set.
 
-You can start meshbot locally by running:
+You can start meshbot locally (in shell) by running:
 
     % bin/hubot
 
@@ -33,6 +33,29 @@ Then you can interact with meshbot by typing `meshbot help`.
     meshbot animate me <query> - The same thing as `image me`, except adds [snip]
     meshbot help - Displays all of the help commands that meshbot knows about.
     ...
+
+### Running meshbot on Matrix
+
+hubot can join a number of different chat platforms by using adapters. To use the matrix adapter you will need NodeJS version > 6. 
+
+To install the [hubot-matrix](https://github.com/davidar/hubot-matrix) adapter run
+
+   % npm install hubot-matrix
+
+Set the login, password and host server (if not matrix) in system variables\
+   % export HUBOT_MATRIX_USER="username"
+   % export HUBOT_MATRIX_PASSWORD="password"
+   % export HUBOT_MATRIX_HOST_SERVER="https://matrix.tomesh.net"
+
+Finally start the meshbot using this adapter
+
+    % bin/hubot -a matrix
+
+**Notes:**
+
+You can set the name of the bot by adding the `--name MYBOTNAME` parameter.
+
+To have the bot join a channel simply invite it. To have him leave the channel kick it.
 
 ### Configuration
 
