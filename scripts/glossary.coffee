@@ -12,9 +12,9 @@ module.exports = (robot) ->
     err_msg = "Oops I couldn't find anything :-("
 	
     items.push 
-      title:"Node",content:"A connection point on a network. A network is formed when two nodes are able to communicate with one another."
+        title:"Node",content:"A connection point on a network. A network is formed when two nodes are able to communicate with one another."
     items.push 
-      title:"Link",content:"A logical connection between two nodes (ignoring physical infrastructure in the way) or a physical link between two nodes (using ethernet, fiber, wireless equipment, etc.). Links allow nodes to communicate with one another."
+        title:"Link",content:"A logical connection between two nodes (ignoring physical infrastructure in the way) or a physical link between two nodes (using ethernet, fiber, wireless equipment, etc.). Links allow nodes to communicate with one another."
     items.push 
         title:"Supernode",content:"A node on the network that actively routes traffic/data for other nodes."
     items.push 
