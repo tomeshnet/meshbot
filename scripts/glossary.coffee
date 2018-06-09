@@ -96,4 +96,4 @@ module.exports = (robot) ->
     matches = results.map (el) ->
         el.original.content
     matches = err_msg if matches.length is 0
-    msg.send matches
+    msg.send matches + ''
